@@ -1,1 +1,38 @@
-<p>login works!</p>
+<div class="half-form">
+  <div class="bg-img">
+    <img class="auth-image" src="assets/images/logo.svg" />
+  </div>
+
+    <div class="form">
+      <mat-card>
+
+      <form [formGroup]="signInForm">
+        <div class="flex-container">
+          <div class="FormCell">
+            <mat-form-field>
+              <input matInput type="text" formControlName="userName" placeholder="User name">
+              <mat-error
+                *ngIf="signInForm.controls['userName'].hasError('required') && (signInForm.controls['userName'].dirty || signInForm.controls['userName'].touched)">
+                Field is required.
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="FormCell">
+            <mat-form-field>
+              <input matInput type="password" formControlName="password" placeholder="Password">
+              <mat-error
+                *ngIf="signInForm.controls['password'].hasError('required') && (signInForm.controls['password'].dirty || signInForm.controls['password'].touched)">
+                Field is required.
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <button mat-raised-button color="primary" (click)="signIn()">Login</button>
+          <!-- <button class="back-to-login" mat-stroked-button color="primary" (click)="login()">Back to login</button> -->
+        </div>
+      </form>
+    </mat-card>
+
+    </div>
+
+
+</div>
