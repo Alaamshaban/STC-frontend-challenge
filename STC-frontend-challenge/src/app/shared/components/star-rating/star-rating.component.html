@@ -1,0 +1,8 @@
+<div class="rating-container">
+  <button mat-icon-button [color]="color" *ngFor="let ratingId of ratingArr;index as i" [id]="'star_'+i"s class="star-btn">
+    <mat-icon>
+      {{showIcon(i)}}
+    </mat-icon>
+  </button></div>
+
+
