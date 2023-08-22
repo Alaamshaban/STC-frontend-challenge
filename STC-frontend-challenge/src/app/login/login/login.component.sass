@@ -4,7 +4,7 @@
   align-items: center
 
   .bg-img
-    width: 50%
+    width: 40%
 
   .form
     width: 100%
@@ -16,15 +16,22 @@
       justify-content: end
       margin: 2rem
       .FormCell
-        margin: 10px
+        margin: 1rem
         width: 60%
         > mat-form-field
           width: 100%
 
 
+.login-card-container
+  margin: 2rem
 
-
-
+.welcome-text
+  display: flex
+  align-items: center
+  justify-content: center
+  font-size: x-large
+  font-weight: 600
+  margin: 3rem 0
 
 
 
@@ -38,7 +45,9 @@
 $desktop: 1280px
 @media only screen and (min-width: $desktop)
   .auth-image
-    width: 30vw
+    width: 20vw
+  .form
+    width: 30%
   .half-form
     flex-direction: row
     justify-content: center
