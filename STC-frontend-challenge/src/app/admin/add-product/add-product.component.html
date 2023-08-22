@@ -5,7 +5,7 @@
       <div class="FormCell">
         <mat-form-field>
           <input matInput type="text" formControlName="price" placeholder="Price">
-          <mat-icon matSuffix>mode_edit</mat-icon>
+
           <mat-error
             *ngIf="addProductForm.controls['price'].hasError('required') && (addProductForm.controls['price'].dirty || addProductForm.controls['price'].touched)">
             Field is required.
@@ -16,10 +16,10 @@
         <mat-form-field>
           <mat-select panelClass="SelectClass" placeholder="Category" formControlName="category">
             <mat-option *ngFor="let c of categories" [value]="c">
-                {{ c }}
+              {{ c }}
             </mat-option>
-        </mat-select>
-          <mat-icon matSuffix>mode_edit</mat-icon>
+          </mat-select>
+
           <mat-error
             *ngIf="addProductForm.controls['category'].hasError('required') && (addProductForm.controls['category'].dirty || addProductForm.controls['category'].touched)">
             Field is required.
@@ -28,17 +28,17 @@
       </div>
       <div class="FormCell">
         <mat-form-field>
-          <textarea cols="2" rows="2" matInput type="text" formControlName="description" placeholder="Description"></textarea>
-            <mat-icon matSuffix>mode_edit</mat-icon>
+          <textarea cols="2" rows="2" matInput type="text" formControlName="description"
+            placeholder="Description"></textarea>
+
         </mat-form-field>
       </div>
     </div>
   </form>
-  </div>
-<div mat-dialog-actions>
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button  cdkFocusInitial (click)="addProduct()" *ngIf="!isEdit">Add</button>
-  <button mat-button  cdkFocusInitial (click)="editProduct()" *ngIf="isEdit">Save</button>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close color="warn">Cancel</button>
+  <button mat-button cdkFocusInitial (click)="addProduct()" color="primary" *ngIf="!isEdit">Add</button>
+  <button mat-button cdkFocusInitial (click)="editProduct()" *ngIf="isEdit" color="primary">Save</button>
 
 </div>
-
