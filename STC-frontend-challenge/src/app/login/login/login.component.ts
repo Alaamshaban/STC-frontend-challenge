@@ -26,6 +26,8 @@ export class LoginComponent implements OnInit {
       this.authService.login(role)
       if (role === Roles.user)
         this.router.navigate(['user'])
+      else
+      this.router.navigate(['admin'])
     }
     else
       this.signInForm.markAllAsTouched();
