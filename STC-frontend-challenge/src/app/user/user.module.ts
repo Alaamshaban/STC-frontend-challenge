@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { UserRoutingModule } from './user-routing.module';
 import { UserViewComponent } from './user-view/user-view.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -11,6 +12,7 @@ import { UserViewComponent } from './user-view/user-view.component';
   ],
   imports: [
     CommonModule,
+    SharedModule,
     UserRoutingModule
   ]
 })

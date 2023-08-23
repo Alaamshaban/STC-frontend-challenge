@@ -10,13 +10,14 @@ import { Product } from 'src/app/shared/models/product.model';
 import { NetworkService } from 'src/app/shared/services/network.service';
 import { AddProductComponent } from '../add-product/add-product.component';
 
+
 @Component({
   selector: 'app-admin-view',
   templateUrl: './admin-view.component.html',
   styleUrls: ['./admin-view.component.sass']
 })
 export class AdminViewComponent implements AfterViewInit {
-  displayedColumns: string[] = ['id', 'category', 'description', 'image', 'price', 'rate', 'edit', 'delete'];
+  displayedColumns: string[] = ['id', 'title','category', 'description', 'image', 'price', 'rate', 'edit', 'delete'];
   data: any[] = [];
 
   resultsLength = 0;
@@ -74,7 +75,7 @@ export class AdminViewComponent implements AfterViewInit {
   }
 
   addProduct() {
-    this.getCategories().subscribe(categories => {
+    this.getCategories().subscribe((categories:string[]) => {
       const ref = this.dialog.open(AddProductComponent, {
         width: '50vw',
         data: {
@@ -87,7 +88,7 @@ export class AdminViewComponent implements AfterViewInit {
             apiPath: 'products',
             body: product
           }
-          this.networkService.post(options).subscribe(res => this.loadData())
+          this.networkService.post(options).subscribe(() => this.loadData())
         }
       })
     })
@@ -101,7 +102,7 @@ export class AdminViewComponent implements AfterViewInit {
     }
     this.loaderService.isLoading.next(true);
     const i = this.data.findIndex(res => res.id === row.id)
-    this.networkService.delete(options).subscribe(res => {
+    this.networkService.delete(options).subscribe(() => {
       this.loaderService.isLoading.next(false);
       this.data.splice(i, 1)
       this.table?.renderRows()

@@ -13,6 +13,8 @@ import { StarRatingComponent } from './components/star-rating/star-rating.compon
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
 
 const MaterialModules = [
   MatProgressSpinnerModule,
@@ -23,7 +25,8 @@ const MaterialModules = [
   MatPaginatorModule,
   MatBadgeModule,
   MatDialogModule,
-  MatSelectModule
+  MatSelectModule,
+  MatToolbarModule
 ]
 
 const Forms=[
@@ -36,7 +39,8 @@ MatInputModule
 
 @NgModule({
   declarations: [
-    StarRatingComponent
+    StarRatingComponent,
+    ToolbarComponent
   ],
   imports: [
     CommonModule,
@@ -44,6 +48,6 @@ MatInputModule
     ...Forms
 
   ],
-  exports: [...MaterialModules,...Forms,StarRatingComponent ]
+  exports: [...MaterialModules,...Forms,StarRatingComponent,ToolbarComponent ]
 })
 export class SharedModule { }

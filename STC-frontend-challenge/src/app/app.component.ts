@@ -8,5 +8,6 @@ import { LoaderService } from './shared/loader.service';
 })
 export class AppComponent {
   title = 'STC-frontend-challenge';
+  overlay=true
   constructor(public loaderService:LoaderService){}
 }

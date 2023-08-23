@@ -1,5 +1,23 @@
-<div class="spinner"  *ngIf="loaderService.isLoading | async">
+
+<ng-container *ngIf="loaderService.isLoading | async">
+  <ng-container *ngIf="overlay;else progressSpinner">
+    <div class="overlay">
+        <div class="center">
+            <ng-template [ngTemplateOutlet]="progressSpinner"></ng-template>
+        </div>
+    </div>
+    </ng-container>
+    <ng-template #progressSpinner>
+        <mat-spinner class="spinner" >
+        </mat-spinner>
+    </ng-template>
+</ng-container>
+
+<!-- <div class="spinner" *ngIf="loaderService.isLoading | async">
   <mat-spinner></mat-spinner>
 
-</div>
+</div> -->
+<ng-container *ngIf="!(loaderService.isLoading | async)">
+  <app-toolbar></app-toolbar>
+</ng-container>
 <router-outlet></router-outlet>

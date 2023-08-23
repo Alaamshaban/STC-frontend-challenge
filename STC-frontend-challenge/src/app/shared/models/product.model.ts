@@ -4,7 +4,8 @@ export interface Product {
   id: number;
   image: string;
   price: number;
-  rating: Rate
+  rating: Rate;
+  title:string;
 }
 
 export interface Rate {
