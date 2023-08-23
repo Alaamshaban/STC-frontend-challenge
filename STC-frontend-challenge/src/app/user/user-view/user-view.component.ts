@@ -90,7 +90,6 @@ export class UserViewComponent implements AfterViewInit {
             this.groupped[cat] = new MatTableDataSource(group[cat]);
             this.data = [...this.data, ...group[cat]]
           })
-          console.log(this.data)
           return Object.keys(group);
         }),
       )

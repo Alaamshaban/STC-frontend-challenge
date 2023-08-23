@@ -29,7 +29,7 @@ export class AuthService {
 
   isLoggedIn() {
     const loggedIn = localStorage.getItem('STATE');
-    if (loggedIn == 'true')
+    if (loggedIn == 'true' && this.getRole())
       this.isLogin = true;
     else
       this.isLogin = false;

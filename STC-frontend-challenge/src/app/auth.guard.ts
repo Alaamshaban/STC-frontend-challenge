@@ -2,13 +2,14 @@ import { inject } from '@angular/core'
 import { ActivatedRouteSnapshot, CanActivateChildFn, CanActivateFn, Router, RouterStateSnapshot, UrlTree } from '@angular/router'
 import { AuthService } from './shared/auth.service'
 import { of, switchMap } from 'rxjs'
+import { MatSnackBar } from '@angular/material/snack-bar'
 
-export const AuthGuard: CanActivateFn | CanActivateChildFn = ( next: ActivatedRouteSnapshot,
+export const AuthGuard: CanActivateFn | CanActivateChildFn = (next: ActivatedRouteSnapshot,
   state: RouterStateSnapshot) => {
   const router: Router = inject(Router)
   let url: string = state.url;
   // Check the authentication status
-  return checkUserLogin(next,url)
+  return checkUserLogin(next, url)
     .pipe(
       switchMap((authenticated) => {
         // If the user is not authenticated...
@@ -25,19 +26,24 @@ export const AuthGuard: CanActivateFn | CanActivateChildFn = ( next: ActivatedRo
     )
 }
 
-export const checkUserLogin = (route: ActivatedRouteSnapshot,url:any) => {
-  const router: Router = inject(Router)
+export const checkUserLogin = (route: ActivatedRouteSnapshot, url: any) => {
   const authService: AuthService = inject(AuthService)
   if (authService.isLoggedIn()) {
     const userRole = authService.getRole();
     if (route.data['role'] && route.data['role'].indexOf(userRole) === -1) {
-      router.navigate(['/home']);
+      openSnackBar()
       return of(false);
     }
     return of(true);
   }
-
-  router.navigate(['/home']);
+  openSnackBar()
   return of(false);
 
+}
+
+const openSnackBar = () => {
+  const _snackBar: MatSnackBar = inject(MatSnackBar)
+  const _router: Router = inject(Router)
+  _snackBar.open('invalid credentials','',{duration:1000})
+  _router.navigate(['login'])
 }

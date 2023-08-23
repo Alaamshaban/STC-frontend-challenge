@@ -14,6 +14,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 
 const MaterialModules = [
@@ -26,7 +27,8 @@ const MaterialModules = [
   MatBadgeModule,
   MatDialogModule,
   MatSelectModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatSnackBarModule
 ]
 
 const Forms=[

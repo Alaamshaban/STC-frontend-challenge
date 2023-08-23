@@ -15,19 +15,20 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.signInForm = this.fb.group({
-      userName: ['user name', Validators.required],
-      password: ['Password', Validators.required]
+      userName: ['user', Validators.required],
+      password: ['user', Validators.required]
     })
   }
 
   signIn() {
     if (this.signInForm.valid) {
-      const role = this.signInForm.value.userName === 'user name' ? Roles.user : Roles.admin
+      const role = this.signInForm.value.userName === 'user' && this.signInForm.value.password === 'user' ? Roles.user :
+        this.signInForm.value.userName === 'admin' && this.signInForm.value.password === 'admin' ? Roles.admin : ''
       this.authService.login(role)
       if (role === Roles.user)
         this.router.navigate(['user'])
       else
-      this.router.navigate(['admin'])
+        this.router.navigate(['admin'])
     }
     else
       this.signInForm.markAllAsTouched();

@@ -1,4 +1,3 @@
-import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
@@ -9,7 +8,6 @@ const routes: Routes = [
     loadChildren: () =>
       import('./login/login.module').then((mod) => mod.LoginModule),
   },
-  { path: 'home', component: HomeComponent },
   {
     path: 'admin', loadChildren: () =>
       import('./admin/admin.module').then((mod) => mod.AdminModule),

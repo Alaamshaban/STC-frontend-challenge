@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -7,9 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./toolbar.component.sass']
 })
 export class ToolbarComponent {
-  constructor(private router: Router) { }
+  constructor(private router: Router, private authService: AuthService) { }
   signOut() {
-    localStorage.clear();
-    this.router.navigate(['login'])
+    this.authService.logout().subscribe(() => this.router.navigate(['login'])
+    )
   }
 }
